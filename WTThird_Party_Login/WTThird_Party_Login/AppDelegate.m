@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "WTThirdPartyLoginManager.h"
 @interface AppDelegate ()
 
 @end
@@ -41,5 +41,46 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
+// iOS9 以上用这个方法接收
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
+{
+    NSDictionary * dic = options;
+    NSLog(@"%@", dic);
+    if ([options[UIApplicationOpenURLOptionsSourceApplicationKey] isEqualToString:@"com.sina.weibo"]) {
+        NSLog(@"新浪微博~");
+        
+        return [WeiboSDK handleOpenURL:url delegate:[WTThirdPartyLoginManager shareWTThirdPartyLoginManager]];
+    }else if ([options[UIApplicationOpenURLOptionsSourceApplicationKey] isEqualToString:@"com.tencent.xin"]){
+        
+        return [WXApi handleOpenURL:url delegate:[WTThirdPartyLoginManager shareWTThirdPartyLoginManager]];
+    }else if ([options[UIApplicationOpenURLOptionsSourceApplicationKey] isEqualToString:@"com.tencent.mqq"]){
+        
+        //        [WTThirdPartyLoginManager didReceiveTencentUrl:url];
+        return [TencentOAuth HandleOpenURL:url];
+    }
+    return YES;
+}
+// iOS9 以下用这个方法接收
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    NSLog(@"%@",url);
+    
+    
+    if ([sourceApplication isEqualToString:@"com.sina.weibo"]) {
+        
+        return [WeiboSDK handleOpenURL:url delegate:[WTThirdPartyLoginManager shareWTThirdPartyLoginManager]];
+        
+    }else if ([sourceApplication isEqualToString:@"com.tencent.xin"]){
+        
+        return [WXApi handleOpenURL:url delegate:[WTThirdPartyLoginManager shareWTThirdPartyLoginManager]];
+        
+    }else if ([sourceApplication isEqualToString:@"com.tencent.mqq"]){
+        
+        //        [WTShareManager didReceiveTencentUrl:url];
+        return [TencentOAuth HandleOpenURL:url];
+    }
+    
+    
+    return YES;
+}
 @end

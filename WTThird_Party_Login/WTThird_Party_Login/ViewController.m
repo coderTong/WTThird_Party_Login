@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "BDJLoginRegisterController.h"
 @interface ViewController ()
 
 @end
@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+- (IBAction)loginClick:(id)sender {
+    BDJLoginRegisterController * loginVc = [[BDJLoginRegisterController alloc]init];
+    [self presentViewController:loginVc animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
