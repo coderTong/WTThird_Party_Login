@@ -116,7 +116,6 @@ static WTThirdPartyLoginManager * _instance;
     
     if (resp.errCode == WTLoginWeiXinErrCodeSuccess) {
         NSString *code = aresp.code;
-        //NSDictionary *dic = @{@"code":code};
         [[WTThirdPartyLoginManager shareWTThirdPartyLoginManager] getWeiXinUserInfoWithCode:code];
     }else{
         
@@ -135,7 +134,7 @@ static WTThirdPartyLoginManager * _instance;
     NSOperationQueue * queue = [[NSOperationQueue alloc]init];
     
     NSBlockOperation * getAccessTokenOperation = [NSBlockOperation blockOperationWithBlock:^{
-        //    [SVProgressHUD show];
+        
         NSString * urlStr = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",kWeixinAppId,kWeixinAppSecret,code];
         NSURL * url = [NSURL URLWithString:urlStr];
         NSString *responseStr = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -153,7 +152,6 @@ static WTThirdPartyLoginManager * _instance;
         NSDictionary *paramter = @{@"third_id" : dic[@"openid"],
                                    @"third_name" : dic[@"nickname"],
                                    @"third_image":dic[@"headimgurl"],
-                                   @"source_type" : @"5",
                                    @"access_token":self.access_token};
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -185,7 +183,6 @@ static WTThirdPartyLoginManager * _instance;
         NSDictionary *paramter = @{@"third_id" : [_tencentOAuth openId],
                                    @"third_name" : [response.jsonResponse valueForKeyPath:@"nickname"],
                                    @"third_image":[response.jsonResponse valueForKeyPath:@"figureurl_qq_2"],
-                                   @"source_type" : @"1",
                                    @"access_token":[_tencentOAuth accessToken]};
         
         if (self.resultBlock)
@@ -248,7 +245,6 @@ static WTThirdPartyLoginManager * _instance;
         NSDictionary *paramter = @{@"third_id" : [dic valueForKeyPath:@"idstr"],
                                    @"third_name" : [dic valueForKeyPath:@"screen_name"],
                                    @"third_image":[dic valueForKeyPath:@"avatar_hd"],
-                                   @"source_type" : @"2",
                                    @"access_token":token};
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{

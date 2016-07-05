@@ -228,6 +228,36 @@
 			name = framework;
 			sourceTree = "<group>";
 		};
+		0493B6351D2A8DFD00BB41C6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0493B6371D2A8E2200BB41C6 /* Controller */,
+				0493B6361D2A8E1600BB41C6 /* View */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		0493B6361D2A8E1600BB41C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0493B6101D2A52BA00BB41C6 /* BDJVerticalButton.h */,
+				0493B6111D2A52BA00BB41C6 /* BDJVerticalButton.m */,
+				0493B6121D2A52BA00BB41C6 /* UIView+BDJExtension.h */,
+				0493B6131D2A52BA00BB41C6 /* UIView+BDJExtension.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		0493B6371D2A8E2200BB41C6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0493B60D1D2A52BA00BB41C6 /* BDJLoginRegisterController.h */,
+				0493B60E1D2A52BA00BB41C6 /* BDJLoginRegisterController.m */,
+				0493B60F1D2A52BA00BB41C6 /* BDJLoginRegisterController.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		04B132011D27F848009C1685 = {
 			isa = PBXGroup;
 			children = (
@@ -256,13 +286,7 @@
 				04B132131D27F848009C1685 /* ViewController.h */,
 				04B132141D27F848009C1685 /* ViewController.m */,
 				04B132161D27F849009C1685 /* Main.storyboard */,
-				0493B60D1D2A52BA00BB41C6 /* BDJLoginRegisterController.h */,
-				0493B60E1D2A52BA00BB41C6 /* BDJLoginRegisterController.m */,
-				0493B60F1D2A52BA00BB41C6 /* BDJLoginRegisterController.xib */,
-				0493B6101D2A52BA00BB41C6 /* BDJVerticalButton.h */,
-				0493B6111D2A52BA00BB41C6 /* BDJVerticalButton.m */,
-				0493B6121D2A52BA00BB41C6 /* UIView+BDJExtension.h */,
-				0493B6131D2A52BA00BB41C6 /* UIView+BDJExtension.m */,
+				0493B6351D2A8DFD00BB41C6 /* Login */,
 				0493B6141D2A52BA00BB41C6 /* WTThirdPartyLoginManager.h */,
 				0493B6151D2A52BA00BB41C6 /* WTThirdPartyLoginManager.m */,
 				04B132191D27F849009C1685 /* Assets.xcassets */,
